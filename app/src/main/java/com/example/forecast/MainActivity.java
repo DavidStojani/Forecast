@@ -4,20 +4,27 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.forecast.Model.CustomerModel;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     WeatherDataService weatherDataService = new WeatherDataService(this);
-
+    TextView textView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
+        textView = findViewById(R.id.resultText);
 
+    }
 
 
 //a click to test the api and the async
@@ -30,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onResponse(String weatherCondition) {
-                Toast.makeText(MainActivity.this, weatherCondition, Toast.LENGTH_SHORT).show();
+            public void onResponse(CustomerModel city) {
+                //Toast.makeText(MainActivity.this, city.toString(), Toast.LENGTH_SHORT).show();
+                textView.setText(city.toString());
             }
         });
-
     }
 }

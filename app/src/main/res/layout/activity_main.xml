@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:onClick="onClick"
-        android:text="@string/button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="369dp"
@@ -33,68 +20,68 @@
         app:layout_constraintVertical_bias="0.058" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/resultText"
         android:layout_width="249dp"
         android:layout_height="126dp"
-        android:text="textview to be changed "
+        android:text=" "
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textSize="34dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.844" />
+        app:layout_constraintVertical_bias="0.049" />
 
     <Button
         android:id="@+id/button15"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="20dp"
         android:text="London"
+        android:onClick="onClick"
         android:textSize="10dp"
         app:layout_constraintBottom_toTopOf="@id/button19"
         app:layout_constraintEnd_toStartOf="@+id/button14"
         app:layout_constraintHorizontal_bias="0.42"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/resultText" />
 
     <Button
         android:id="@+id/button14"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="10dp"
-
-        android:layout_marginTop="20dp"
         android:text="Berlin"
+
+        android:textSize="10dp"
         app:layout_constraintBottom_toTopOf="@id/button20"
         app:layout_constraintEnd_toStartOf="@+id/button17"
         app:layout_constraintStart_toEndOf="@id/button15"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/resultText" />
 
     <Button
         android:id="@+id/button17"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="Moscow"
         android:textSize="10dp"
         app:layout_constraintBottom_toTopOf="@id/button21"
         app:layout_constraintEnd_toStartOf="@id/button18"
         app:layout_constraintStart_toEndOf="@id/button14"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/resultText" />
 
     <Button
         android:id="@+id/button18"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:textSize="10dp"
-
         android:text="Dublin"
+
+        android:textSize="10dp"
         app:layout_constraintBottom_toTopOf="@id/button22"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button17"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/resultText" />
 
     <Button
         android:id="@+id/button19"
@@ -248,11 +235,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
+        android:text="Bonn"
+
         android:textSize="10dp"
 
-        android:text="Bonn"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button32"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button27" />
@@ -261,10 +248,10 @@
         android:id="@+id/button32"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="10dp"
-
         android:text="Tokyo"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/button33"
         app:layout_constraintStart_toEndOf="@id/button31"
         app:layout_constraintTop_toBottomOf="@+id/button28" />
@@ -273,12 +260,12 @@
         android:id="@+id/button33"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="10dp"
-
         android:text="Paris"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toStartOf="@id/button34"
 
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toStartOf="@id/button34"
         app:layout_constraintStart_toEndOf="@id/button32"
         app:layout_constraintTop_toBottomOf="@+id/button29" />
 
@@ -289,11 +276,10 @@
         android:layout_marginEnd="20dp"
         android:text="Hamburg"
         android:textSize="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/button33"
         app:layout_constraintTop_toBottomOf="@+id/button30" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

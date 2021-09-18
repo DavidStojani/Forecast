@@ -1,21 +1,16 @@
 package com.example.forecast;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.forecast.Model.CustomerModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.List;
 
 public class WeatherDataService {
 
@@ -24,8 +19,6 @@ public class WeatherDataService {
 
     Context context;
 
-    String humidity="";
-
     public WeatherDataService(Context context) {
         this.context = context;
     }
@@ -33,7 +26,7 @@ public class WeatherDataService {
     public interface VolleyResponseListener {
         void onError(String message);
 
-        void onResponse(String weatherCondition);
+        void onResponse(CustomerModel weatherCondition);
     }
 
     public void getWeatherCondition(int cityID, VolleyResponseListener volleyResponseListener){
@@ -46,15 +39,22 @@ public class WeatherDataService {
 
 
                 try {
+                    //create a city
+                    CustomerModel city = new CustomerModel();
 
                     JSONArray days = response.getJSONArray("consolidated_weather");
-                    JSONObject firstDay = days.getJSONObject(1);
-                    humidity = firstDay.getString("weather_state_name");
+                    JSONObject firstDay = days.getJSONObject(0);
+                    city.setWeather_state_first(firstDay.getString("weather_state_abbr"));
+                    JSONObject secondDay = days.getJSONObject(1);
+                    city.setWeather_state_second(secondDay.getString("weather_state_abbr"));
+
+
+                    volleyResponseListener.onResponse(city);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                volleyResponseListener.onResponse(humidity);
+
             }
         }, new Response.ErrorListener() {
             @Override

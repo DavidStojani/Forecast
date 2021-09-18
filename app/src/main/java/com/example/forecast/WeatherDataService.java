@@ -30,10 +30,15 @@ public class WeatherDataService {
         this.context = context;
     }
 
-    public String getWeatherCondition(int cityID){
+    public interface VolleyResponseListener {
+        void onError(String message);
+
+        void onResponse(String weatherCondition);
+    }
+
+    public void getWeatherCondition(int cityID, VolleyResponseListener volleyResponseListener){
 
         String url = QUERY_FOR_CITY + cityID;
-
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -41,32 +46,25 @@ public class WeatherDataService {
 
 
                 try {
+
                     JSONArray days = response.getJSONArray("consolidated_weather");
                     JSONObject firstDay = days.getJSONObject(1);
-
-                    //humidity assigned correctly but never returned
                     humidity = firstDay.getString("weather_state_name");
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(context, humidity, Toast.LENGTH_SHORT).show();
+                volleyResponseListener.onResponse(humidity);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, "Error came up", Toast.LENGTH_SHORT).show();
-
+                volleyResponseListener.onError("Smth wrong");
             }
         });
 
-
-
-// Add the request to the RequestQueue.
-
+        // Add the request to the RequestQueue.
         MySingleton.getInstance(context).addToRequestQueue(request);
-
-        return humidity;
     }
 //
 //    public List<CustomerModel> getCityForecastByID(String cityID) {

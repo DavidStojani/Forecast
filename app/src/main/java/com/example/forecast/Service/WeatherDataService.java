@@ -1,4 +1,4 @@
-package com.example.forecast;
+package com.example.forecast.Service;
 
 import android.content.Context;
 import android.widget.Toast;
@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.forecast.Model.CustomerModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;

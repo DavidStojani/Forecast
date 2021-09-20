@@ -1,11 +1,10 @@
-package com.example.forecast;
+package com.example.forecast.Service;
 
 import android.content.Context;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-
 
 public class TaskQueueSingleton {
     private static TaskQueueSingleton instance;
@@ -40,4 +39,3 @@ public class TaskQueueSingleton {
 
 
 }
-

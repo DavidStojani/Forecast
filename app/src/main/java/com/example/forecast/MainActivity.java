@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.forecast.Model.CustomerModel;
+import com.example.forecast.Service.WeatherDataService;
+
 import java.util.ArrayList;
 import java.util.List;
 

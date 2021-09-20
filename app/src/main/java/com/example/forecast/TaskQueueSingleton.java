@@ -7,20 +7,20 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
 
-public class QueeSingleton {
-    private static QueeSingleton instance;
+public class TaskQueueSingleton {
+    private static TaskQueueSingleton instance;
     private RequestQueue requestQueue;
     private static Context ctx;
 
-    private QueeSingleton(Context context) {
+    private TaskQueueSingleton(Context context) {
         ctx = context;
         requestQueue = getRequestQueue();
 
     }
 
-    public static synchronized QueeSingleton getInstance(Context context) {
+    public static synchronized TaskQueueSingleton getInstance(Context context) {
         if (instance == null) {
-            instance = new QueeSingleton(context);
+            instance = new TaskQueueSingleton(context);
         }
         return instance;
     }

@@ -14,8 +14,8 @@ import org.json.JSONObject;
 public class WeatherDataService {
 
 
-    public static final String QUERY_FOR_CITY = "https://www.metaweather.com/api/location/";
-    public static final String QUERY_FOR_ID = "https://www.metaweather.com/api/location/search/?query=";
+    private static final String QUERY_FOR_CITY = "https://www.metaweather.com/api/location/";
+    private static final String QUERY_FOR_ID = "https://www.metaweather.com/api/location/search/?query=";
     Context context;
     CustomerModel city = new CustomerModel();
 
@@ -48,7 +48,7 @@ public class WeatherDataService {
         }, error -> Toast.makeText(context, "Id could not be assigned", Toast.LENGTH_SHORT).show());
 
         //Add the request to the queue
-        QueeSingleton.getInstance(context).addToRequestQueue(request);
+        TaskQueueSingleton.getInstance(context).addToRequestQueue(request);
     }
 
     public interface VolleyResponseListenerForWeather {
@@ -84,7 +84,7 @@ public class WeatherDataService {
         }, error -> Toast.makeText(context, "Weather state was not assigned", Toast.LENGTH_SHORT).show());
 
         // Add the request to the RequestQueue.
-        QueeSingleton.getInstance(context).addToRequestQueue(request);
+        TaskQueueSingleton.getInstance(context).addToRequestQueue(request);
     }
 
     public interface GetWeatherCondByNameCallBack {

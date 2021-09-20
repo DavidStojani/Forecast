@@ -1,4 +1,6 @@
-package com.example.forecast.Model;
+package com.example.forecast;
+
+import androidx.annotation.NonNull;
 
 public class CustomerModel {
     private String name;
@@ -7,47 +9,33 @@ public class CustomerModel {
     private String weather_state_second;
     private int risk;
 
-    public CustomerModel(String name, int id, String weather_state_first, String weather_state_second) {
-        this.name = name;
-        this.id = id;
-        this.weather_state_first = weather_state_first;
-        this.weather_state_second = weather_state_second;
-    }
     public CustomerModel() {
     }
 
-    public String getName() {
-        return name;
-    }
 
     public int getId() {
         return id;
     }
 
-
-    public int getRisk() {
-        return this.risk;
-    }
-
     public int calcWeather_risk() {
 
         switch (weather_state_first) {
-            case "sn":
+            case "Snow":
                 switch (weather_state_second) {
-                    case "sn": return 100;
-                    case "sl": return 70;
+                    case "Snow": return 100;
+                    case "Sleet": return 70;
                     default:   return 30;
                 }
-            case "sl":
+            case "Sleet":
                 switch (weather_state_second) {
-                    case "sn": return 70;
-                    case "sl": return 50;
+                    case "Snow": return 70;
+                    case "Sleet": return 50;
                     default:   return 10;
                 }
             default:
                 switch (weather_state_second) {
-                    case "sn": return 30;
-                    case "sl": return 10;
+                    case "Snow": return 30;
+                    case "Sleet": return 10;
                     default:   return 5;
 
                 }
@@ -55,9 +43,6 @@ public class CustomerModel {
         }
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getWeather_state_first() {
         return weather_state_first;
@@ -76,8 +61,9 @@ public class CustomerModel {
         this.risk = calcWeather_risk();
     }
 
+
     @Override
     public String toString() {
-        return "Snowrisk: " + risk +"%";
+        return "Condition: "+ weather_state_first +"\r Snowrisk: " + risk +"%";
     }
 }
